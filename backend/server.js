@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // Database connection
-const db = new sqlite3.Database(path.join(__dirname, 'db/database.sqlite'), (err) => {
+const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'), (err) => {
   if (err) console.error('DB Error:', err);
   else console.log('Connected to SQLite database');
 });
@@ -28,5 +28,6 @@ app.get('*', (req, res) => {
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
