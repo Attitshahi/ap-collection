@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product - Ap Collection</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="logo">Ap Collection</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<section class="product-detail">
+    <div id="product-info"></div>
+</section>
+
+<footer>
+    &copy; 2025 Ap Collection. All rights reserved.
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('id');
+const productInfo = document.getElementById('product-info');
+
+fetch(`http://localhost:3000/api/products/${productId}`)
+.then(res => res.json())
+.then(product => {
+    productInfo.innerHTML = `
+        <div class="product-card">
+            <img src="images/${product.image}" alt="${product.name}">
+            <h2>${product.name}</h2>
+            <p>Rs ${product.price}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+        </div>
+    `;
+});
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function addToCart(productId){
+    const existing = cart.find(item => item.id === productId);
+    if(existing) existing.qty += 1;
+    else cart.push({id: productId, qty: 1});
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Product added to cart!');
+}
+</script>
+</body>
+</html>

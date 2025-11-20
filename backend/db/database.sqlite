@@ -1,0 +1,23 @@
+-- Products Table
+CREATE TABLE IF NOT EXISTS products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    category TEXT,
+    price REAL NOT NULL,
+    image TEXT
+);
+
+-- Categories Table
+CREATE TABLE IF NOT EXISTS categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+-- Orders Table
+CREATE TABLE IF NOT EXISTS orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    products TEXT NOT NULL,
+    customer_name TEXT,
+    address TEXT,
+    status TEXT DEFAULT 'Pending'
+);

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Ap Collection</title>
+<link rel="stylesheet" href="../frontend/css/style.css">
+</head>
+<body>
+<h2>Admin Dashboard</h2>
+
+<section class="admin-section">
+    <h3>Add Product</h3>
+    <input type="text" id="product-name" placeholder="Name">
+    <input type="text" id="product-category" placeholder="Category">
+    <input type="number" id="product-price" placeholder="Price">
+    <input type="text" id="product-image" placeholder="Image Filename">
+    <button onclick="addProduct()">Add</button>
+</section>
+
+<section class="admin-section">
+    <h3>Existing Products</h3>
+    <div id="admin-product-list"></div>
+</section>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
