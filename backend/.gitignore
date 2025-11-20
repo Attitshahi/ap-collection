@@ -1,0 +1,34 @@
+# -----------------------
+# Node.js dependencies
+# -----------------------
+node_modules/
+
+# -----------------------
+# Logs
+# -----------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -----------------------
+# OS files
+# -----------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------
+# Environment files
+# -----------------------
+.env
+
+# -----------------------
+# Build / Output folders (if any)
+# -----------------------
+dist/
+build/
+
+# -----------------------
+# Optional: Database
+# -----------------------
+# Uncomment the next line if you do NOT want to push your local database to GitHub
+# database.sqlite
