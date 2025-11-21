@@ -7,6 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+// Database connection
+const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'), (err) => {
+  if (err) console.error('DB Error:', err);
+  else console.log('Connected to SQLite database');
+});
+
 // Auto-create tables if they don't exist
 db.serialize(() => {
   db.run(`
@@ -27,13 +34,6 @@ db.serialize(() => {
   `);
 });
 
-// Database connection
-const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'), (err) => {
-  if (err) console.error('DB Error:', err);
-  else console.log('Connected to SQLite database');
-});
-
-
 // Routes
 const productRoutes = require('./routes/products');
 const adminRoutes = require('./routes/admin');
@@ -49,6 +49,7 @@ app.get('*', (req, res) => {
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
